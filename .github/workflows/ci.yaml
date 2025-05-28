@@ -9,12 +9,14 @@ jobs:
         macos-arm64
     steps:
      - uses: dawidd6/action-download-artifact@v9
-       name: macOS-x86_64
-       path: intel
+       with:
+           name: macOS-x86_64
+           path: intel
 
      - uses: dawidd6/action-download-artifact@v9
-       name: macOS-arm64
-       path: arm
+       with:
+           name: macOS-arm64
+           path: arm
 
      - name: List files
        run: find .
