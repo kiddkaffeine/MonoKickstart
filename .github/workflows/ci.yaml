@@ -37,8 +37,8 @@ jobs:
        with:
            name: macOS-universal
            path: |
+             arm/*
              kick.bin.osx
-             arm/*.dll
 
      - name: Upload MonoPosixHelper
        uses: actions/upload-artifact@v4
