@@ -2,7 +2,7 @@ name: CI
 on: [push]
 jobs:
   macos-universal:
-    name: macOS (arm64)
+    name: macOS (universal)
     runs-on: macos-latest
     needs: [macos-intel, macos-arm64]
     steps:
