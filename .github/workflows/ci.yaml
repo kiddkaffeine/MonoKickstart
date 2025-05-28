@@ -16,8 +16,37 @@ jobs:
            name: macOS-arm64
            path: arm
 
-     - name: List files
-       run: find .
+     - uses: actions/download-artifact@v4
+       with:
+           name: macOS-x86_64-MonoPosixHelper
+           path: intel
+
+     - uses: actions/download-artifact@v4
+       with:
+           name: macOS-arm64-MonoPosixHelper
+           path: arm
+
+     - name: Lipo Libraries
+       run: |
+           find .
+           lipo -create -output kick.bin.osx intel/kick.bin.osx arm/kick.bin.osx
+           lipo -create -output libMonoPosixHelper.dylib intel/libMonoPosixHelper.dylib arm/libMonoPosixHelper.dylib
+
+      - name: Upload kick.bin.osx
+        uses: actions/upload-artifact@v4
+        with:
+            name: macOS-universal
+            path: |
+              kick.bin.osx
+              arm/*.dll
+
+      - name: Upload MonoPosixHelper
+        uses: actions/upload-artifact@v4
+        with:
+            name: macOS-universal-MonoPosixHelper
+            path: libMonoPosixHelper.dylib
+
+
 
 
   macos-intel:
