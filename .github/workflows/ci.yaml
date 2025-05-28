@@ -32,22 +32,19 @@ jobs:
            lipo -create -output kick.bin.osx intel/kick.bin.osx arm/kick.bin.osx
            lipo -create -output libMonoPosixHelper.dylib intel/libMonoPosixHelper.dylib arm/libMonoPosixHelper.dylib
 
-      - name: Upload kick.bin.osx
-        uses: actions/upload-artifact@v4
-        with:
-            name: macOS-universal
-            path: |
-              kick.bin.osx
-              arm/*.dll
+     - name: Upload kick.bin.osx
+       uses: actions/upload-artifact@v4
+       with:
+           name: macOS-universal
+           path: |
+             kick.bin.osx
+             arm/*.dll
 
-      - name: Upload MonoPosixHelper
-        uses: actions/upload-artifact@v4
-        with:
-            name: macOS-universal-MonoPosixHelper
-            path: libMonoPosixHelper.dylib
-
-
-
+     - name: Upload MonoPosixHelper
+       uses: actions/upload-artifact@v4
+       with:
+           name: macOS-universal-MonoPosixHelper
+           path: libMonoPosixHelper.dylib
 
   macos-intel:
     name: macOS (x86_64)
