@@ -4,9 +4,7 @@ jobs:
   macos-universal:
     name: macOS (arm64)
     runs-on: macos-latest
-    needs:
-      - macos-intel
-        macos-arm64
+    needs: [macos-intel, macos-arm64]
     steps:
      - uses: dawidd6/action-download-artifact@v9
        with:
